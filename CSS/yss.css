@@ -1,0 +1,397 @@
+/*  HTML：结构 ————>
+    布局->内容————>
+    外到内
+    css:样式 */
+
+
+ /* 最外层容器开始  */
+.yys{
+    width:100%;
+    max-width:1920px;
+    min-width:1280px;
+    /* overflow: hidden;自动找高    CSS中有粘性定位的父元素不能设置overflow:hidden/auto/scroll,无法同时使用*/
+}
+/* <!-- 最外层容器结束 --> */
+
+/* 头部样式 */
+.header{
+    width: 100%;
+    height: 55px;
+    position: relative;
+    line-height: 55px;/* 文字垂直居中 */
+}
+.menu{
+    width: 179px;
+    height: 54px;
+    background-color:#cf132c;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    font-size: 12px;
+}
+.sale{
+    width: 138px;
+    border-left: 1px solid #dadada;
+    height: 54px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #333;
+    font-size: 12px;
+    /* 修改鼠标属性 小手*/
+    cursor: pointer;
+}
+/* 鼠标悬停 */
+.sale:hover{
+    color: #bc2e2e;
+    border-bottom: 1px solid #bc2e2e;
+    background-color: #f3f3f3;
+
+}
+/* 头部样式结束 */
+
+/* banner样式 */
+/* --导航条 */
+.banner{
+    width: 100%;
+    height: 884px;
+}
+.nav{
+    /* position: relative; */
+    /*将导航条固定不动：粘性定位        ！！！有粘性定位的父元素不能设置overflow:hidden/auto/scroll！！！*/
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 500;
+
+    width: 100%;
+    height: 60px;
+    background: url("../images/nav_back_bg_fd2505e.jpg") no-repeat center top;
+}
+.nav-wrap{
+    position: relative;
+    width: 1180px;
+    height: 70px;
+    margin: auto;/* 水平居中 */
+    line-height: 70px;
+}
+.nav-wrap li{
+    float: left;/*浮动于图片上*/
+    width: 84.28px;
+    font-size: 14px;
+}
+.nav-wrap a{
+    /* a有标签，所以单独设置样式 */
+    color: white;
+}
+/* 第一个标签常有背景图 */
+.nav-active{
+    background:url("../images/nav_bg1_d44f09d.jpg") no-repeat;
+}
+.nav-active>a{
+    color: #000;
+}
+/* 点击其他标签时才有背景图 */
+.nav-wrap li:hover{
+    background:url("../images/nav_bg1_d44f09d.jpg") no-repeat;
+}
+/* 点击其他标签时字体变设色 */
+.nav-wrap li:hover>a{
+    color: #000;
+}
+/* 放大镜 */
+.search{
+    width: 18px;
+    height: 19px;
+    background: url("../images/search_b180dd5.png") no-repeat;
+    /* 相对于nav-wrap定位 */
+    position: absolute;
+    top: 25px;
+    right: -35px;
+    transition: transform 0.3s ease; /* 平滑过渡效果 */
+}
+.nav-wrap .search:hover{
+        transform: scaleX(-1); /* 水平镜像翻转 */
+}
+/* 鼠标悬停至下拉列表 */
+/* 思路：
+①下拉列表绝对定位到显示的位置
+②display:none;隐藏    不能用overflow：hidding,因为溢出部分无法显示
+③鼠标悬停显示display:block; */
+.nav-list{
+    position: absolute;
+    top:60px;
+    left:0;
+    display:none;/*display:是否显示*/
+    width: 100%;
+    height: 140px;
+    background: url("../images/subnav_bg_5cc9309.jpg") center 0 no-repeat;/*垂直居中，水平居上*/
+    background-size: 100% auto;
+}
+ .nav:hover>.nav-list{
+/* css无法定位到list() */
+    display: block;
+} 
+.nav-list img{
+    margin: 5px 10px 0;
+    width: 100px;
+    height: auto;
+}
+
+.banner-box{
+    width: 100%;
+    height: 784px;
+    position: relative;
+    overflow: hidden;
+    top:-10px;/*所以盒子也必须上移*/
+}
+/* .banner-box video：选择 .banner-box 内部的所有 <video> 元素，无论它们嵌套了多少层。
+    .banner-box > video：只选择 .banner-box 的直接子元素中的 <video> 元素。 */
+
+
+    /* .banner-box>.video{
+    margin-top: -10px;
+    width: 1473px;
+    height: 100%;
+    object-fit: cover;
+    /* margin-left:取百分比相当于父元素的宽度
+    transform：translateX(-  ) 往回走自己的宽度一半
+    ==
+    position：relative；相对于自己的位置
+    left：-  ；往左走了自己宽度的一半
+} */
+.banner-box img{
+    margin-top: -10px;/*如果只把图片上移，则超出盒子大小，被隐藏*/
+    width: 1473px;
+    height: 784px;
+}
+.banner-bottom{
+    width: 100%;
+    height: 287px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background:url("../images/bot_head_bg_450ba6b.png") repeat-x center bottom;
+}
+.banner-bottom img{
+    margin: 100px 10px 0;
+    width: 100px;
+    height: auto;
+}
+.banner-logo{
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    width: 60px;
+    height: 300px;
+    background:url("../images/200.webp") no-repeat;
+    background-size: 100%;
+}
+/* banner样式结束 */
+
+ /* <!-- 主体开始 --> */
+.wrap{
+    width: 1180px;;
+    margin: 0 auto;
+}
+/* <!-- 主体结束 --> */
+
+/* 平安世界开始 */
+.Safe-world{
+    width: 100%;
+    height: 495px;
+    margin-bottom: 70px;
+    position: relative;
+    overflow: hidden; /* 清除margin-top的影响*/
+}
+.Safe-world-title{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 54px;
+    height: 145px;
+    background: url("../images/index_z_203e03e.png");
+    background-position: -835px -532px;
+}
+/* .vertical-text {
+    writing-mode: vertical-rl; /* 文字竖直排列 *
+    transform: rotate(0deg); /* 将文字旋转0度，使其从上到下排列 
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black; /* 根据需要调整文字颜色 
+    font-family: 粗体; /* 使用粗体字体 
+    font-size: 30px; /* 根据需要调整字体大小 
+    text-align: center; /* 文字居中对齐 
+    width: 54px; /* 与 .Safe-world-title 的宽度一致 
+    height: 145px; /* 与 .Safe-world-title 的高度一致 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+.world-img{
+    width: 1180px;
+    height: 320px;
+    margin-top: 128px;
+    background: url("../images/shishen_bg_000bc91.jpg")no-repeat center 0;
+}
+.big-img{
+    width: 940px;
+    height: 320px;
+    margin: 0 auto;
+}
+.big-img > a{
+    position: relative;
+    float: left;
+    width: 470px;
+    height: 320px;
+}
+.big-img img{
+    position: absolute;
+    top: -186px;
+    right: -140px;
+}
+.big-img .big-img-left{
+    position: relative;
+    left: -140px;
+}
+.big-img .big-img-right{
+    position: relative;
+    top: -200px;
+    right:100px;
+    width: 600px;
+    height: auto;
+}
+/* 平安世界结束 */
+/* <!-- 游戏攻略开始 --> */
+.game{
+    width:100% ;
+    height: 510px;
+    background: url("../images/stategy_bg_4def7a7.jpg") 0 no-repeat;
+    background-position: 0px 174px;
+}
+.game-title{
+    float: left;
+    width: 55px;
+    height: 145px;
+    background: url("../images/index_z_203e03e.png");
+    background-position: -899px -532px;
+}
+.game-box{
+    float: right;
+    width: 1080px;
+    height: 209px;;
+    background: url();
+}
+.game-box>div{
+    position: relative;
+    float: left;
+    width: 340px;
+    height: 209px;
+    margin-left: 20px;
+}
+.game-box img{
+    width: 340px;
+    height: 209px;
+}
+.game-box span{
+    position: absolute;
+    margin-top: -10px;
+    width: 40px;
+    height: 100px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    background: url("../images/stategy_tit_bg_3dfaee2.png");
+    background-size: 40px 100px;
+    color: black;
+}
+.game-box span:first-of-type{
+    top: 0;
+    left: 18px;
+}
+.game-box span:last-of-type{
+    top: 50px;
+    left: 100px;
+}
+.shiting{
+    width: 100%;
+    height: 262px;
+    padding-bottom: 47px;
+}
+.shiting-title{
+    float: left;
+    width: 55px;
+    height: 146px;
+    padding: 0 10px;
+    background: url("../images/index_z_203e03e.png");
+    background-position: -760px -532px;
+}
+.shiting-box{
+    float: right;
+    width: 1090px;
+    height: 215px;
+    background: url("../images/shiting_bg_735f29c.jpg")no-repeat left 70px;
+}
+.shiting-box>div{
+    position: relative;
+    float: left;
+    width: 250px;
+    height: 141px;
+    margin-left: 20px;
+}
+.shiting-box>div:first-child{
+    margin-left: 30px;
+}
+.shiting-name{
+    position: absolute;/*绝对定位会将默认的数值改变为由内容撑开*/
+    right: -10px;
+    bottom: -10px;
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+}
+/* <!-- 游戏攻略结束 --> */
+/* <!-- 泛娱乐开始 --> */
+.fun{
+    width: 100%;
+    height: 516px;
+    margin-bottom: 70px;
+    background: url("../images/fun_bg_99effa1.jpg") no-repeat left 175px;
+}
+.fun-title{
+    float: left;
+    width: 55px;
+    height: 140px;
+    background: url("../images/index_z_203e03e.png");
+    background-position: -1025px -532px;
+}
+.fun-box{
+    float: right;
+    width: 1060px;
+    height: 516px;
+}
+.fun-con{
+    position: relative;
+    width: 1060px;
+    height: 536px;
+    overflow: hidden;
+}
+.fun-container{
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 2300px;
+    height: 516px;
+}
+.fun-container>div{
+    float: left;
+    margin-right: 10px;
+    width: 220px;
+    height: 516px;
+}
+.fun-container img{
+    width: 220px;
+    height: 516px;
+}
+/* <!-- 泛娱乐结束 --> */
